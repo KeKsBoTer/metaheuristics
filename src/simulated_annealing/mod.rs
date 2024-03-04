@@ -46,7 +46,7 @@
 
 use super::Metaheuristics;
 use rand::{thread_rng, Rng};
-use time::{Duration, Instant};
+use std::time::{Duration, Instant};
 
 /// Returns an approximate solution to your optimisation problem using Simulated Annealing
 ///
@@ -65,11 +65,10 @@ pub fn solve<T>(problem: &mut dyn Metaheuristics<T>, runtime: Duration) -> T {
     let mut best_candidate = problem.generate_candidate();
     let mut annealing_candidate = problem.tweak_candidate(&best_candidate);
     let start_time = Instant::now();
-    let runtime_in_milliseconds = runtime.whole_milliseconds() as f64;
+    let runtime_in_milliseconds = runtime.as_millis() as f64;
 
     loop {
-        let portion_elapsed =
-            (start_time.elapsed().whole_milliseconds() as f64) / runtime_in_milliseconds;
+        let portion_elapsed = (start_time.elapsed().as_millis() as f64) / runtime_in_milliseconds;
 
         if portion_elapsed >= 1.0 {
             break;

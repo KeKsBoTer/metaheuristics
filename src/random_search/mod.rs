@@ -12,7 +12,7 @@
 //!```
 
 use super::Metaheuristics;
-use time::{Duration, Instant};
+use std::time::{Duration, Instant};
 
 /// Returns an approximate solution to your optimisation problem using Random Search
 ///

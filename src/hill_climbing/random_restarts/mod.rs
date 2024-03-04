@@ -20,7 +20,7 @@
 
 use super::super::Metaheuristics;
 use rand::{thread_rng, Rng};
-use time::{Duration, Instant};
+use std::time::{Duration, Instant};
 
 /// Returns an approximate solution to your optimisation problem using Hill Climbing with random restarts
 ///
